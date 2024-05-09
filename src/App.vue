@@ -1,10 +1,17 @@
 <template>
-    <div id="app">
-        <router-view></router-view>
-    </div>
+	<el-config-provider :locale="zhCn">
+		<router-view />
+	</el-config-provider>
 </template>
+
+<script setup lang="ts">
+import { ElConfigProvider } from 'element-plus';
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import { useThemeStore } from './store/theme';
+
+const theme = useThemeStore();
+theme.initTheme();
+</script>
 <style>
-    @import "./assets/css/main.css";
-    @import "./assets/css/color-dark.css";     /*深色主题*/
-    /*@import "./assets/css/theme-green/color-green.css";   浅绿色主题*/
+@import './assets/css/main.css';
 </style>
